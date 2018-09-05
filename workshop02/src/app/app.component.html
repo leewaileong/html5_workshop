@@ -1,0 +1,16 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<mat-toolbar fxLayout="row" 
+             color="primary">
+  <img src="../assets/logo.png"  class="logo" >
+  Address Book
+</mat-toolbar>
+
+<app-address-entry (newAddress)="processAddress($event)"></app-address-entry>
+
+<mat-tab-group (selectedTabChange)="loadAddress($event)">
+  <mat-tab *ngFor="let t of tabs" [label]="t.label" >
+    <mat-list *ngFor="let l of loadedAddress">
+      <mat-list-item>a</mat-list-item>
+    </mat-list>
+  </mat-tab>
+</mat-tab-group>

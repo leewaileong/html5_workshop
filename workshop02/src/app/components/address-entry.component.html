@@ -1,0 +1,51 @@
+<form #form="ngForm" (ngSubmit)="processForm(form)"  fxLayout="column">
+  <mat-form-field>
+    <input type="text" 
+           placeholder="Name"
+           name="name"
+           ngModel
+           required
+           matInput>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input type="text" 
+           placeholder="Address"
+           name="address"
+           ngModel
+           required
+           matInput>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input type="text" 
+           placeholder="Phone"
+           name="phone"
+           ngModel
+           required
+           matInput>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input type="text" 
+           placeholder="Email"
+           name="email"
+           ngModel
+           required
+           
+           matInput>
+  </mat-form-field>
+
+  <div fxLayout="row" fxLayoutAlign="end" fxLayoutGap="10px">
+    <button type="button" 
+            mat-raised-button 
+            color="warn">
+            Clear
+    </button>
+    <button type="submit" 
+            [disabled]="form.invalid"
+            mat-raised-button color="accent">
+            Add
+    </button>
+  </div>
+</form>
