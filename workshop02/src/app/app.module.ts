@@ -6,12 +6,14 @@ import { MaterialModule } from './material.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddressEntryComponent } from './components/address-entry.component';
+import { AddressListComponent } from './components/address-list.component';
 import { AddressService } from './address.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AddressEntryComponent
+    AddressEntryComponent,
+    AddressListComponent
   ],
   imports: [
     BrowserModule,

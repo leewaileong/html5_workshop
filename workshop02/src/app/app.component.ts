@@ -19,9 +19,11 @@ export class AppComponent implements OnInit{
     { label: 'U - Z', pattern: /^[u-z].*/i }
   ];
 
+  private loadedAddress: AddressBookInterface[] = [];
+
   private addressSvc: AddressService;
 
-  private loadedAddress: AddressBookInterface[] = [];
+ // private loadedAddress: AddressBookInterface[] = [];
 
   //svc is injected into component
   constructor(svc: AddressService)
@@ -45,6 +47,8 @@ export class AppComponent implements OnInit{
     console.log('processAddress: ', address);
     this.addressSvc.addNewAddress(address)
       .then(result => {
+        //TODO: check if new addr is visible under current tab, if yes, reload tab
+
         console.log("saved: ", result);
       })
       .catch(err => {
