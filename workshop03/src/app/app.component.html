@@ -1,0 +1,22 @@
+<h1>Star Wars</h1>
+<form #form="ngForm" (ngSubmit)="search(form)"  fxLayout="column">
+  People ID:   
+  <input type="number" 
+           placeholder="Enter people ID"
+           name="peopleId"
+           ngModel
+           required
+           min="1"
+           >
+ 
+  <div fxLayout="row" fxLayoutAlign="end" fxLayoutGap="10px">
+    <button type="button" 
+            color="warn">
+            Clear
+    </button>
+    <button type="submit" 
+            [disabled]="form.invalid">
+            Search
+    </button>
+  </div>
+</form>

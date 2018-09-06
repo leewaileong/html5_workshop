@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { AddressBookInterface } from './model';
 import { AddressService } from './address.service';
 import { MatTabChangeEvent } from '@angular/material/tabs';
@@ -20,10 +20,11 @@ export class AppComponent implements OnInit{
   ];
 
   private loadedAddress: AddressBookInterface[] = [];
-
+  private currentTab = 0;
   private addressSvc: AddressService;
 
- // private loadedAddress: AddressBookInterface[] = [];
+  @Output()
+  refreshTab = new EventEmitter<MatTabChangeEvent>();
 
   //svc is injected into component
   constructor(svc: AddressService)
@@ -36,6 +37,7 @@ export class AppComponent implements OnInit{
     this.addressSvc.findAddress(this.tabs[0].pattern)
     .then(addr => {
       console.log("address: ", addr);
+      this.loadedAddress = addr;
     })
     .catch(err => {
       console.log("err: ", err);
@@ -48,8 +50,11 @@ export class AppComponent implements OnInit{
     this.addressSvc.addNewAddress(address)
       .then(result => {
         //TODO: check if new addr is visible under current tab, if yes, reload tab
-
-        console.log("saved: ", result);
+   //     if(address.name. )
+        let event = new MatTabChangeEvent();
+        event.index = 0;
+        this.refreshTab.next(event);
+     console.log("saved: ", result);
       })
       .catch(err => {
         console.log("err: ", err);
@@ -59,6 +64,7 @@ export class AppComponent implements OnInit{
   loadAddress(event: MatTabChangeEvent)
   {
     console.log('event: ', this.tabs[event.index].pattern);
+    this.currentTab = event.index;
 
     this.addressSvc.findAddress(this.tabs[event.index].pattern)
     .then(addr => {
