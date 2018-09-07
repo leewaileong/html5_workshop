@@ -1,0 +1,50 @@
+<mat-card>
+  <mat-card-title>{{people?.name}}</mat-card-title>
+  <img mat-card-image [src]="people?.imageURL">
+  <mat-card-content>
+      Height: {{people?.height}}
+  </mat-card-content>
+  <mat-card-content>
+        Mass: {{people?.mass}}
+  </mat-card-content>
+  <mat-card-content>
+      Hair Color: {{people?.hair_color}}
+  </mat-card-content>
+  <mat-card-content>
+      Skin Color: {{people?.skin_color}}
+  </mat-card-content>
+  <mat-card-content>
+      Eye Color: {{people?.eye_color}}
+  </mat-card-content>
+  <mat-card-content>
+      Birth Year: {{people?.birth_year}}
+  </mat-card-content>
+  <mat-card-content>
+    Gender: {{people?.gender}}
+  </mat-card-content>
+  <mat-card-content>
+    Home World: {{people?.homeworld}}
+  </mat-card-content>
+  <mat-card-content>
+      Films: {{people?.films}}
+  </mat-card-content>
+  <mat-card-content>
+      Species: {{people?.species}}
+  </mat-card-content>
+  <mat-card-content>
+      Vehicles: {{people?.vehicles}}
+  </mat-card-content>
+  <mat-card-content>
+      Starships: {{people?.starships}}
+  </mat-card-content>
+  <mat-card-content>
+      Created: {{people?.created}}
+  </mat-card-content>
+  <mat-card-content>
+      Edited: {{people?.edited}}
+  </mat-card-content>
+  <mat-card-content>
+        URL: {{people?.url}}
+  </mat-card-content>
+  <button type="button" mat-raised-button [routerLink]="['/']">Back</button>
+</mat-card>>

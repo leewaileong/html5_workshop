@@ -1,7 +1,7 @@
 //make this into service
 //inject http into service
 import { Injectable } from "@angular/core";
-import { HttpClient, HttpErrorResponse, HttpResponse } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 
 import { StarWarsPeopleInterface } from "./model";
 
@@ -17,7 +17,7 @@ export class StarWarsService
 
     searchPeople(id: number): Promise<StarWarsPeopleInterface>
     {
-        console.log("here");
+        console.log("searchPeople");
         return (
             this.httpClient.get<StarWarsPeopleInterface>(`https://swapi.co/api/people/${id}`)
             .toPromise()

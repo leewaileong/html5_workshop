@@ -13,28 +13,41 @@ import { StarWarsDatabaseService } from './starwars.storage.service';
 export class AppComponent {
   @ViewChild('form')
   form: NgForm;
-  people: StarWarsService;
-  result: StarWarsPeopleInterface;
-
+  people: StarWarsPeopleInterface;
+  
   title = 'workshop03';
 
-  constructor(private svc: StarWarsService, private swdbSvc: StarWarsDatabaseService){
-    this.people = svc;
+  constructor(private swSvc: StarWarsService, private swdbSvc: StarWarsDatabaseService){
+    
   }
 
   search()
   {
+    this.people = null;
+
     this.swdbSvc.findPeople(this.form.value.peopleId)
     .then((result) => 
-    {
+    { //resolve
       console.log("found: ", result)
-      return (null);
+      this.people = result;
+      throw (false);
     }, 
-    this.people.searchPeople.bind(this.swdbSvc))
-    .then(result => {
-      this.people.searchPeople(this.form.value.peopleId)})
+    (id) =>
+    {
+      console.log('not in db: ', id);
+      return (id);
+    })
+    .then(this.swSvc.searchPeople.bind(this.swdbSvc))
+    .then((result: StarWarsPeopleInterface) => {
+      this.people = this.people || result;
+      return (result);
+    })
+    .then(this.swdbSvc.addNewPeople.bind(this.swdbSvc))
     .catch(err => {
-      console.log("err: ", err);
+      if(err)
+      {
+        console.log("err: ", err);
+      }
     });
 
    /* this.people.searchPeople(this.form.value.peopleId)
@@ -46,6 +59,6 @@ export class AppComponent {
       console.log("err: ", err);
     });*/
 
-    this.form.reset();
+    this.form.resetForm();
   }
 }

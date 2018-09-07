@@ -1,0 +1,10 @@
+<mat-nav-list>
+    <h2 mat-subheader>Characters</h2>
+
+    <a *ngFor="let p of people" 
+       mat-list-item 
+       [routerLink]="[ '/detail', p.id ]">
+      {{p.id}}: {{ p.name }}
+    </a>
+
+  </mat-nav-list>

@@ -1,0 +1,42 @@
+<mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="space-between center">
+    <span>
+      <img src="/src/assets/star-wars.png" class="icon" >
+      Star Wars
+    </span>
+    
+    <button type="button" 
+    mat-icon-button color="accent"
+    (click)="goBack()">
+      <mat-icon>cancel</mat-icon>
+    </button>
+</mat-toolbar>
+
+  <form #form="ngForm" (ngSubmit)="save(form)" 
+  fxLayout="column"
+  fxLayoutGap="10px">
+      People ID:   
+      <mat-form-field>
+        <input type="number" 
+                placeholder="Enter people ID"
+                name="peopleId"
+                ngModel
+                required
+                matInput
+                min="1"
+                max="88">
+        <mat-hint>Star Wars People</mat-hint>
+      </mat-form-field>
+
+      <div fxLayout="row" fxLayoutAlign="end" fxLayoutGap="10px">
+        <button type="reset" 
+                color="warn"
+                mat-raised-button>
+                Clear
+        </button>
+        <button type="submit" 
+                mat-raised-button
+                [disabled]="form.invalid">
+                Add
+        </button>
+      </div>
+    </form>

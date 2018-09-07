@@ -18,6 +18,14 @@ export class StarWarsDatabaseService
         });
     }
 
+    getAll(): Promise<StarWarsPeopleInterface[]>
+    {
+        return (
+            this.db['people'].orderBy('name')
+            .toArray()
+        );        
+    }
+
     addNewPeople(people: StarWarsPeopleInterface): Promise<number>
     {
         return (this.db['people'].put(people));
