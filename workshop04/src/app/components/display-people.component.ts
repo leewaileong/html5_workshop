@@ -17,10 +17,10 @@ export class DisplayPeopleComponent implements OnInit {
     private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    this.swdbSvc.findPeople(5)
+    this.swdbSvc.findPeople(parseInt(this.activatedRoute.snapshot.params.id))
     .then(result => {
       this.people = result;
-      console.log("ABC: ", this.activatedRoute.snapshot.queryParams.message);
+      console.log("ABC: ", this.activatedRoute.snapshot.params.id);
     })
     
   }

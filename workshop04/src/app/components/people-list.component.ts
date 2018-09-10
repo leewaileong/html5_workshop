@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { StarWarsPeopleInterface } from '../model';
 import { StarWarsDatabaseService } from '../starwars.storage.service';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -11,6 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class PeopleListComponent implements OnInit {
 
+  @Output()
   people: StarWarsPeopleInterface[] = [];
 
   constructor(
